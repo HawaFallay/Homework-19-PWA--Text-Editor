@@ -24,13 +24,51 @@ module.exports = () => {
         title: "JATE",
       }),
 
-      new InjectManifest
+      new InjectManifest({
+        swSrc: "./src-sw.js",
+        swDest: "src-sw.js",
+      }),
 
-      
+//create manifest.json
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: "just another text editor",
+        short_name: "JATE",
+        description: "javascript notes app",
+        backgrround_color: "#225ca3",
+        start_url: "./",
+        publicPath: "./",
+        icons: [
+          {
+            src: path.resolve("src/image/logo.png"),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join("assets", "icons"),
+          }
+        ]
+      })
     ],
 
     module: {
       rules: [
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/present-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
+            },
+          },
+        }
         
       ],
     },
