@@ -3,5 +3,23 @@
     "concurrently": "^7.6.0",
     "express": "^4.18.2",
     "if-env": "^1.0.4"
-  }
+  },
+  "name": "homework-19-pwa--text-editor",
+  "description": "# TITLE",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.21.0",
+    "@babel/preset-env": "^7.20.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pwa",
+    "text",
+    "editor"
+  ],
+  "author": "",
+  "license": "ISC"
 }
